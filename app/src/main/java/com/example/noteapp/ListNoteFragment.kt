@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -57,6 +59,16 @@ class ListNoteFragment:Fragment() {
             viewModel._noteList.collect{
                 noteAdapter.diffUtil.submitList(it)
             }
+        }
+        //search Notes
+        lifecycleScope.launchWhenStarted {
+            viewModel.searchNote.collect{
+                noteAdapter.diffUtil.submitList(it)
+            }
+        }
+
+        binding.searchNote.addTextChangedListener{
+            viewModel.searchNote(it.toString().trim(),it.toString().trim())
         }
 
 

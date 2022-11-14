@@ -7,4 +7,6 @@ class Repository(private val note_database:NoteDatabase) {
     suspend fun upsertNote(note:Note) = note_database.note_dao().upsertNote(note)
 
     fun selectNotes() = note_database.note_dao().selectNotes()
+
+    fun searchNotes(title:String?,noteText:String?) = note_database.note_dao().searchNote(title,noteText)
 }
