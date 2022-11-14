@@ -17,7 +17,8 @@ class NoteAdapter(val onCLick:(Note)->Unit) : RecyclerView.Adapter<NoteAdapter.N
         RecyclerView.ViewHolder(binding.root) {
 
          fun bind(note: Note) {
-            binding.textView.text = note.note_title
+            binding.listNoteTitle.text = note.note_title
+             binding.listNoteText.text = note.note_text
              binding.root.setOnClickListener{
                  onCLick.invoke(note)
              }

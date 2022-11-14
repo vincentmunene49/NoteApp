@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.noteapp.Adapter.NoteAdapter
 import com.example.noteapp.ViewModel.NoteViewModel
 import com.example.noteapp.databinding.FragmentListNotesBinding
@@ -38,7 +39,7 @@ class ListNoteFragment:Fragment() {
 
 
         //setup adapter
-        binding.noteRecylerView.layoutManager = LinearLayoutManager(context)
+        binding.noteRecylerView.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         noteAdapter = NoteAdapter {
             val bundle = Bundle().apply {
                 putParcelable("note",it)
